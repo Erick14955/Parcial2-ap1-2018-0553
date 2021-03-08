@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Parcial2_ap1_2018_0553.Entidades
 {
-    class ProyectoDetalle
+    public class ProyectoDetalle
     {
         [Key]
         public int TipoId { get; set; }

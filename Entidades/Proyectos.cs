@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Parcial2_ap1_2018_0553.Entidades
 {
-    class Proyectos
+    public class Proyectos
     {
         [Key]
         public int TipoId { get; set; }

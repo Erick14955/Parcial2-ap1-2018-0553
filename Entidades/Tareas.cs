@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Parcial2_ap1_2018_0553.Entidades
 {
-    class Tareas
+    public class Tareas
     {
         [Key]
         public int TareaId { get; set; }
