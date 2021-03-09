@@ -22,10 +22,10 @@ namespace Parcial2_ap1_2018_0553.DAL
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Tareas>().HasData(
-                    new Tareas() { TareaId = 1, TipoTarea = "Analisis"},
-                    new Tareas() { TareaId = 2, TipoTarea = "Diseño" },
-                    new Tareas() { TareaId = 3, TipoTarea = "Programación" },
-                    new Tareas() { TareaId = 4, TipoTarea = "Prueba" }
+                    new Tareas() { TipoTarea = "Analisis", TareaId = 1},
+                    new Tareas() { TipoTarea = "Diseño" , TareaId = 2},
+                    new Tareas() { TipoTarea = "Programación" , TareaId = 3},
+                    new Tareas() { TipoTarea = "Prueba" , TareaId = 4}
                 );
         }
     }

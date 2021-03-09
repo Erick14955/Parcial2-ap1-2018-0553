@@ -11,7 +11,7 @@ namespace Parcial2_ap1_2018_0553.Migrations
                 name: "Proyectos",
                 columns: table => new
                 {
-                    ProyectoId = table.Column<int>(type: "INTEGER", nullable: false)
+                    TipoId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DescripcionProyecto = table.Column<string>(type: "TEXT", nullable: true),
@@ -19,7 +19,7 @@ namespace Parcial2_ap1_2018_0553.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proyectos", x => x.ProyectoId);
+                    table.PrimaryKey("PK_Proyectos", x => x.TipoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -39,22 +39,20 @@ namespace Parcial2_ap1_2018_0553.Migrations
                 name: "ProyectoDetalle",
                 columns: table => new
                 {
-                    TipoId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    TipoId = table.Column<int>(type: "INTEGER", nullable: false),
                     TipoTarea = table.Column<string>(type: "TEXT", nullable: true),
                     Requerimentos = table.Column<string>(type: "TEXT", nullable: true),
-                    Tiempo = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProyectoId = table.Column<int>(type: "INTEGER", nullable: true)
+                    Tiempo = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProyectoDetalle", x => x.TipoId);
                     table.ForeignKey(
-                        name: "FK_ProyectoDetalle_Proyectos_ProyectoId",
-                        column: x => x.ProyectoId,
+                        name: "FK_ProyectoDetalle_Proyectos_TipoId",
+                        column: x => x.TipoId,
                         principalTable: "Proyectos",
-                        principalColumn: "ProyectoId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "TipoId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -76,11 +74,6 @@ namespace Parcial2_ap1_2018_0553.Migrations
                 table: "Tareas",
                 columns: new[] { "TareaId", "TipoTarea" },
                 values: new object[] { 4, "Prueba" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProyectoDetalle_ProyectoId",
-                table: "ProyectoDetalle",
-                column: "ProyectoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

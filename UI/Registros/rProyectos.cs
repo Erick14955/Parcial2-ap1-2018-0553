@@ -42,7 +42,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             FechadateTimePicker.Value = DateTime.Now.Date;
             DescripciontextBox.Clear();
             TiempototaltextBox.Text = 0.ToString();
-            TipoTareacomboBox.Text = "";
+            this.Detalle = new List<ProyectoDetalle>();
             CargarGrid();
         }
 
@@ -57,6 +57,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             TipoTareacomboBox.Text = tarea.TipoTarea;
 
             this.Detalle = proyectos.Detalle;
+            CargarGrid();
         }
 
         private Proyectos LlenarClase()
@@ -66,6 +67,8 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             proyectos.Fecha = FechadateTimePicker.Value.Date;
             proyectos.DescripcionProyecto = DescripciontextBox.Text;
             proyectos.TiempoTotal = Convert.ToInt32(TiempototaltextBox.Text);
+            proyectos.Detalle = this.Detalle;
+            CargarGrid();
 
             return proyectos;
         }
@@ -113,7 +116,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
-            Proyectos proyectos;
+            Proyectos proyectos = new Proyectos();
             int id;
             int.TryParse(IdnumericUpDown.Text, out id);
 
@@ -138,7 +141,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
                 this.Detalle = (List<ProyectoDetalle>)DetalledataGridView.DataSource;
             }
 
-            Tareas tareas = TareasBLL.Buscar(Convert.ToInt32(TipoTareacomboBox.ValueMember));
+            Tareas tareas = TareasBLL.Buscar(Convert.ToInt32(TipoTareacomboBox.SelectedValue));
             this.Detalle.Add(
                 new ProyectoDetalle
                 (
@@ -147,7 +150,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
                     Requerimentos: RequerimentotextBox.Text,
                     Tiempo: Convert.ToInt32(TiempotextBox.Text)
                 )
-                );
+            );
 
             CargarGrid();
 
@@ -187,12 +190,13 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
             Proyectos proyectos;
+            bool paso = false;
             if (!Validar())
                 return;
 
             proyectos = LlenarClase();
 
-            var paso = ProyectosBLL.Guardar(proyectos);
+            paso = ProyectosBLL.Guardar(proyectos);
 
             if (paso)
             {

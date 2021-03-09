@@ -16,5 +16,15 @@ namespace Parcial2_ap1_2018_0553.Entidades
         [ForeignKey("TipoId")]
         public List<ProyectoDetalle> Detalle { get; set; }
 
+        public Proyectos()
+        {
+            TipoId = 0;
+            Fecha = DateTime.Now;
+            DescripcionProyecto = "";
+            TiempoTotal = 0;
+
+            Detalle = new List<ProyectoDetalle>();
+        }
+
     }
 }

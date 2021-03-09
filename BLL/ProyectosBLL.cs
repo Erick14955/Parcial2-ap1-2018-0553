@@ -53,7 +53,7 @@ namespace Parcial2_ap1_2018_0553.BLL
             try
             {
                 contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectoDetalle Where TipoId={proyecto.TipoId}");
-                foreach(var item in proyecto.DescripcionProyecto)
+                foreach(var item in proyecto.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
                 }
@@ -124,7 +124,7 @@ namespace Parcial2_ap1_2018_0553.BLL
 
             try
             {
-                proyecto = contexto.Proyectos.Include(e => e.DescripcionProyecto).Where(p => p.TipoId == id).SingleOrDefault();
+                proyecto = contexto.Proyectos.Include(e => e.Detalle).Where(p => p.TipoId == id).SingleOrDefault();
             }
             catch (Exception)
             {
