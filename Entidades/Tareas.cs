@@ -13,8 +13,7 @@ namespace Parcial2_ap1_2018_0553.Entidades
         [Key]
         public int TareaId { get; set; }
         public string TipoTarea { get; set; }
-
         [ForeignKey("TareaId")]
-        public virtual Tareas tareas { get; set; }
+        public virtual Tareas tareas{ get; set; }
     }
 }

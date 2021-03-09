@@ -13,8 +13,8 @@ namespace Parcial2_ap1_2018_0553.Entidades
         public DateTime Fecha { get; set; }
         public string DescripcionProyecto { get; set; }
         public int TiempoTotal { get; set; }
-
-        [ForeignKey("ProyectoId")]
+        [ForeignKey("TipoId")]
         public List<ProyectoDetalle> Detalle { get; set; }
+
     }
 }

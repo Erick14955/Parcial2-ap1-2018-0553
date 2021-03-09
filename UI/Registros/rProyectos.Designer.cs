@@ -305,6 +305,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TiempototaltextBox.Location = new System.Drawing.Point(521, 430);
             this.TiempototaltextBox.Name = "TiempototaltextBox";
+            this.TiempototaltextBox.ReadOnly = true;
             this.TiempototaltextBox.Size = new System.Drawing.Size(142, 23);
             this.TiempototaltextBox.TabIndex = 13;
             // 
@@ -334,6 +335,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             this.Controls.Add(this.ProyectoIdlabel);
             this.MinimumSize = new System.Drawing.Size(691, 508);
             this.Name = "rProyectos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Proyectos";
             this.Load += new System.EventHandler(this.rProyectos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.IdnumericUpDown)).EndInit();

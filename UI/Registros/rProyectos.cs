@@ -19,12 +19,14 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
         {
             InitializeComponent();
             this.Detalle = new List<ProyectoDetalle>();
+            TiempototaltextBox.Text = 0.ToString();
         }
 
         private void rProyectos_Load(object sender, EventArgs e)
         {
-            TipoTareacomboBox.DisplayMember = "TareaId";
-            TipoTareacomboBox.ValueMember = "TipoTarea";
+            TipoTareacomboBox.DataSource = TareasBLL.GetTareas();
+            TipoTareacomboBox.ValueMember = "TareaId";
+            TipoTareacomboBox.DisplayMember = "TipoTarea";
         }
 
         public void CargarGrid()
@@ -39,17 +41,20 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             IdnumericUpDown.Value = 0;
             FechadateTimePicker.Value = DateTime.Now.Date;
             DescripciontextBox.Clear();
-            TiempototaltextBox.Clear();
+            TiempototaltextBox.Text = 0.ToString();
+            TipoTareacomboBox.Text = "";
             CargarGrid();
         }
 
         private void LlenarCampo(Proyectos proyectos)
         {
+            Tareas tarea = new Tareas();
             this.Detalle = new List<ProyectoDetalle>();
             IdnumericUpDown.Value = proyectos.TipoId;
             FechadateTimePicker.Value = proyectos.Fecha;
             DescripciontextBox.Text = proyectos.DescripcionProyecto;
             TiempototaltextBox.Text = proyectos.TiempoTotal.ToString();
+            TipoTareacomboBox.Text = tarea.TipoTarea;
 
             this.Detalle = proyectos.Detalle;
         }
@@ -60,7 +65,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             proyectos.TipoId = Convert.ToInt32(IdnumericUpDown.Value);
             proyectos.Fecha = FechadateTimePicker.Value.Date;
             proyectos.DescripcionProyecto = DescripciontextBox.Text;
-            proyectos.TiempoTotal = Convert.ToInt32(TiempototaltextBox);
+            proyectos.TiempoTotal = Convert.ToInt32(TiempototaltextBox.Text);
 
             return proyectos;
         }
@@ -132,14 +137,17 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             {
                 this.Detalle = (List<ProyectoDetalle>)DetalledataGridView.DataSource;
             }
-            Tareas tareas = TareasBLL.Buscar(Convert.ToInt32(TipoTareacomboBox.Text));
-            this.Detalle.Add(new ProyectoDetalle()
-            {
-                TipoId = Convert.ToInt32(TipoTareacomboBox.Text),
-                TipoTarea = tareas.TipoTarea,
-                Requerimentos = RequerimentotextBox.Text,
-                Tiempo = Convert.ToInt32(TiempotextBox.Text)
-            });
+
+            Tareas tareas = TareasBLL.Buscar(Convert.ToInt32(TipoTareacomboBox.ValueMember));
+            this.Detalle.Add(
+                new ProyectoDetalle
+                (
+                    TipoId: tareas.TareaId,
+                    TipoTarea: tareas.TipoTarea,
+                    Requerimentos: RequerimentotextBox.Text,
+                    Tiempo: Convert.ToInt32(TiempotextBox.Text)
+                )
+                );
 
             CargarGrid();
 

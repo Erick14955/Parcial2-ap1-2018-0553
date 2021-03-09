@@ -18,7 +18,7 @@ namespace Parcial2_ap1_2018_0553.BLL
             Tareas tareas;
             try
             {
-                tareas = contexto.Tareas.Include(e => e.TipoTarea).Where(p => p.TareaId == id).SingleOrDefault();
+                tareas = contexto.Tareas.Find(id);
             }
             catch (Exception)
             {
