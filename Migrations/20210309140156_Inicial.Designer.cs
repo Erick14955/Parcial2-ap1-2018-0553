@@ -9,7 +9,7 @@ using Parcial2_ap1_2018_0553.DAL;
 namespace Parcial2_ap1_2018_0553.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210309024901_Inicial")]
+    [Migration("20210309140156_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,10 @@ namespace Parcial2_ap1_2018_0553.Migrations
             modelBuilder.Entity("Parcial2_ap1_2018_0553.Entidades.ProyectoDetalle", b =>
                 {
                     b.Property<int>("TipoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("ProyectoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Requerimentos")
@@ -34,12 +38,14 @@ namespace Parcial2_ap1_2018_0553.Migrations
 
                     b.HasKey("TipoId");
 
+                    b.HasIndex("ProyectoId");
+
                     b.ToTable("ProyectoDetalle");
                 });
 
             modelBuilder.Entity("Parcial2_ap1_2018_0553.Entidades.Proyectos", b =>
                 {
-                    b.Property<int>("TipoId")
+                    b.Property<int>("ProyectoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -52,7 +58,10 @@ namespace Parcial2_ap1_2018_0553.Migrations
                     b.Property<int>("TiempoTotal")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("TipoId");
+                    b.Property<int>("TipoId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ProyectoId");
 
                     b.ToTable("Proyectos");
                 });
@@ -97,9 +106,7 @@ namespace Parcial2_ap1_2018_0553.Migrations
                 {
                     b.HasOne("Parcial2_ap1_2018_0553.Entidades.Proyectos", null)
                         .WithMany("Detalle")
-                        .HasForeignKey("TipoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProyectoId");
                 });
 
             modelBuilder.Entity("Parcial2_ap1_2018_0553.Entidades.Tareas", b =>

@@ -10,6 +10,7 @@ namespace Parcial2_ap1_2018_0553.Entidades
     public class ProyectoDetalle
     {
         [Key]
+        public int ProyectoId { get; set; }
         public int TipoId { get; set; }
         public string TipoTarea { get; set; }
         public string Requerimentos { get; set; }

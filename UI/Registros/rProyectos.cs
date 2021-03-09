@@ -48,13 +48,10 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
 
         private void LlenarCampo(Proyectos proyectos)
         {
-            Tareas tarea = new Tareas();
-            this.Detalle = new List<ProyectoDetalle>();
-            IdnumericUpDown.Value = proyectos.TipoId;
+            IdnumericUpDown.Value = proyectos.ProyectoId;
             FechadateTimePicker.Value = proyectos.Fecha;
             DescripciontextBox.Text = proyectos.DescripcionProyecto;
             TiempototaltextBox.Text = proyectos.TiempoTotal.ToString();
-            TipoTareacomboBox.Text = tarea.TipoTarea;
 
             this.Detalle = proyectos.Detalle;
             CargarGrid();
@@ -63,7 +60,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
         private Proyectos LlenarClase()
         {
             Proyectos proyectos = new Proyectos();
-            proyectos.TipoId = Convert.ToInt32(IdnumericUpDown.Value);
+            proyectos.ProyectoId = Convert.ToInt32(IdnumericUpDown.Value);
             proyectos.Fecha = FechadateTimePicker.Value.Date;
             proyectos.DescripcionProyecto = DescripciontextBox.Text;
             proyectos.TiempoTotal = Convert.ToInt32(TiempototaltextBox.Text);
@@ -87,27 +84,6 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             {
                 ErroreserrorProvider.SetError(DescripciontextBox, "Este campo no puede quedar vacio");
                 DescripciontextBox.Focus();
-                paso = false;
-            }
-
-            if (RequerimentotextBox.Text == string.Empty)
-            {
-                ErroreserrorProvider.SetError(RequerimentotextBox, "Este campo no puede quedar vacio");
-                RequerimentotextBox.Focus();
-                paso = false;
-            }
-
-            if (TiempotextBox.Text == string.Empty)
-            {
-                ErroreserrorProvider.SetError(TiempotextBox, "Este campo no puede quedar vacio");
-                TiempotextBox.Focus();
-                paso = false;
-            }
-
-            if (string.IsNullOrWhiteSpace(TipoTareacomboBox.Text))
-            {
-                ErroreserrorProvider.SetError(TipoTareacomboBox, "Debe agregar un tipo de tarea especifico");
-                TipoTareacomboBox.Focus();
                 paso = false;
             }
 
@@ -139,6 +115,27 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
             if(DetalledataGridView.DataSource != null)
             {
                 this.Detalle = (List<ProyectoDetalle>)DetalledataGridView.DataSource;
+            }
+
+            if (RequerimentotextBox.Text == string.Empty)
+            {
+                ErroreserrorProvider.SetError(RequerimentotextBox, "Este campo no puede quedar vacio");
+                RequerimentotextBox.Focus();
+                return;
+            }
+
+            if (TiempotextBox.Text == string.Empty)
+            {
+                ErroreserrorProvider.SetError(TiempotextBox, "Este campo no puede quedar vacio");
+                TiempotextBox.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(TipoTareacomboBox.Text))
+            {
+                ErroreserrorProvider.SetError(TipoTareacomboBox, "Debe agregar un tipo de tarea especifico");
+                TipoTareacomboBox.Focus();
+                return;
             }
 
             Tareas tareas = TareasBLL.Buscar(Convert.ToInt32(TipoTareacomboBox.SelectedValue));
@@ -221,9 +218,9 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
                 return;
             }
 
-            Limpiar();
             if (ProyectosBLL.Eliminar(id))
             {
+                Limpiar();
                 MessageBox.Show("Transaccion exitosa", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
