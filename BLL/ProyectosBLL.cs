@@ -52,7 +52,7 @@ namespace Parcial2_ap1_2018_0553.BLL
 
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectoDetalle Where ProyectoId={proyecto.ProyectoId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectoDetalle Where TipoId={proyecto.TipoId}");
                 foreach(var item in proyecto.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;

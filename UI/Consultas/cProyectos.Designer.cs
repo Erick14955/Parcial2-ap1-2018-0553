@@ -34,9 +34,9 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
             this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CriteriotextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Buscarbutton = new System.Windows.Forms.Button();
+            this.DetalledataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // Filtrolabel
@@ -52,6 +52,9 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
             // 
             this.FiltrocomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FiltrocomboBox.FormattingEnabled = true;
+            this.FiltrocomboBox.Items.AddRange(new object[] {
+            "Proyecto Id",
+            "Descripcion"});
             this.FiltrocomboBox.Location = new System.Drawing.Point(23, 37);
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(138, 23);
@@ -68,36 +71,37 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
             // 
             // CriteriotextBox
             // 
-            this.CriteriotextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.CriteriotextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CriteriotextBox.Location = new System.Drawing.Point(167, 37);
             this.CriteriotextBox.Name = "CriteriotextBox";
             this.CriteriotextBox.Size = new System.Drawing.Size(142, 23);
             this.CriteriotextBox.TabIndex = 3;
             // 
-            // button1
+            // Buscarbutton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(315, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 32);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Buscar";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Buscarbutton.Image = ((System.Drawing.Image)(resources.GetObject("Buscarbutton.Image")));
+            this.Buscarbutton.Location = new System.Drawing.Point(315, 28);
+            this.Buscarbutton.Name = "Buscarbutton";
+            this.Buscarbutton.Size = new System.Drawing.Size(82, 32);
+            this.Buscarbutton.TabIndex = 4;
+            this.Buscarbutton.Text = "Buscar";
+            this.Buscarbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Buscarbutton.UseVisualStyleBackColor = true;
+            this.Buscarbutton.Click += new System.EventHandler(this.Buscarbutton_Click);
             // 
-            // dataGridView1
+            // DetalledataGridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.DetalledataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 75);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(725, 351);
-            this.dataGridView1.TabIndex = 5;
+            this.DetalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DetalledataGridView.Location = new System.Drawing.Point(23, 75);
+            this.DetalledataGridView.Name = "DetalledataGridView";
+            this.DetalledataGridView.RowTemplate.Height = 25;
+            this.DetalledataGridView.Size = new System.Drawing.Size(725, 351);
+            this.DetalledataGridView.TabIndex = 5;
             // 
             // cProyectos
             // 
@@ -105,8 +109,8 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(777, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DetalledataGridView);
+            this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.FiltrocomboBox);
@@ -115,7 +119,7 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
             this.Name = "cProyectos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de Proyectos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,7 +131,7 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
         private System.Windows.Forms.ComboBox FiltrocomboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox CriteriotextBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button Buscarbutton;
+        private System.Windows.Forms.DataGridView DetalledataGridView;
     }
 }

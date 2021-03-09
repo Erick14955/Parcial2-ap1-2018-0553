@@ -48,7 +48,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
 
         private void LlenarCampo(Proyectos proyectos)
         {
-            IdnumericUpDown.Value = proyectos.ProyectoId;
+            IdnumericUpDown.Value = proyectos.TipoId;
             FechadateTimePicker.Value = proyectos.Fecha;
             DescripciontextBox.Text = proyectos.DescripcionProyecto;
             TiempototaltextBox.Text = proyectos.TiempoTotal.ToString();
@@ -60,7 +60,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
         private Proyectos LlenarClase()
         {
             Proyectos proyectos = new Proyectos();
-            proyectos.ProyectoId = Convert.ToInt32(IdnumericUpDown.Value);
+            proyectos.TipoId = Convert.ToInt32(IdnumericUpDown.Value);
             proyectos.Fecha = FechadateTimePicker.Value.Date;
             proyectos.DescripcionProyecto = DescripciontextBox.Text;
             proyectos.TiempoTotal = Convert.ToInt32(TiempototaltextBox.Text);
@@ -187,13 +187,12 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
         private void Guardarbutton_Click(object sender, EventArgs e)
         {
             Proyectos proyectos;
-            bool paso = false;
             if (!Validar())
                 return;
 
             proyectos = LlenarClase();
 
-            paso = ProyectosBLL.Guardar(proyectos);
+            var paso = ProyectosBLL.Guardar(proyectos);
 
             if (paso)
             {
