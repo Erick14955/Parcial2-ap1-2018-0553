@@ -48,6 +48,7 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
 
         private void LlenarCampo(Proyectos proyectos)
         {
+            this.Detalle = new List<ProyectoDetalle>();
             IdnumericUpDown.Value = proyectos.TipoId;
             FechadateTimePicker.Value = proyectos.Fecha;
             DescripciontextBox.Text = proyectos.DescripcionProyecto;
@@ -58,13 +59,12 @@ namespace Parcial2_ap1_2018_0553.UI.Registros
         }
 
         private Proyectos LlenarClase()
-        {
+        { 
             Proyectos proyectos = new Proyectos();
             proyectos.TipoId = Convert.ToInt32(IdnumericUpDown.Value);
             proyectos.Fecha = FechadateTimePicker.Value.Date;
             proyectos.DescripcionProyecto = DescripciontextBox.Text;
             proyectos.TiempoTotal = Convert.ToInt32(TiempototaltextBox.Text);
-            proyectos.Detalle = this.Detalle;
             CargarGrid();
 
             return proyectos;

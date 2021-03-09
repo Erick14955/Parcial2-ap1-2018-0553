@@ -99,6 +99,9 @@ namespace Parcial2_ap1_2018_0553.UI.Consultas
             this.DetalledataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DetalledataGridView.Location = new System.Drawing.Point(23, 75);
             this.DetalledataGridView.Name = "DetalledataGridView";
+            this.DetalledataGridView.ReadOnly = true;
+            this.DetalledataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.DetalledataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.DetalledataGridView.RowTemplate.Height = 25;
             this.DetalledataGridView.Size = new System.Drawing.Size(725, 351);
             this.DetalledataGridView.TabIndex = 5;

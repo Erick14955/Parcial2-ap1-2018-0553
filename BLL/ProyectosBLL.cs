@@ -30,7 +30,7 @@ namespace Parcial2_ap1_2018_0553.BLL
             Contexto contexto = new Contexto();
             try
             {
-                contexto.Proyectos.Add(proyecto);
+                contexto.Add(proyecto);
                 paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
