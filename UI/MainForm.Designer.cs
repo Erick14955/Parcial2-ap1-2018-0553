@@ -31,7 +31,7 @@ namespace Parcial2_ap1_2018_0553
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.RegistrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConsultasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConsultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,7 +40,7 @@ namespace Parcial2_ap1_2018_0553
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RegistrosToolStripMenuItem,
-            this.ConsultasToolStripMenuItem1});
+            this.ConsultasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -54,11 +54,11 @@ namespace Parcial2_ap1_2018_0553
             this.RegistrosToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.RegistrosToolStripMenuItem.Text = "&Registros";
             // 
-            // ConsultasToolStripMenuItem1
+            // ConsultasToolStripMenuItem
             // 
-            this.ConsultasToolStripMenuItem1.Name = "ConsultasToolStripMenuItem1";
-            this.ConsultasToolStripMenuItem1.Size = new System.Drawing.Size(71, 20);
-            this.ConsultasToolStripMenuItem1.Text = "&Consultas";
+            this.ConsultasToolStripMenuItem.Name = "ConsultasToolStripMenuItem";
+            this.ConsultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.ConsultasToolStripMenuItem.Text = "&Consultas";
             // 
             // MainForm
             // 
@@ -67,6 +67,7 @@ namespace Parcial2_ap1_2018_0553
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Sistema de gestion de proyectos";
@@ -81,7 +82,7 @@ namespace Parcial2_ap1_2018_0553
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem RegistrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ConsultasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ConsultasToolStripMenuItem;
     }
 }
 

@@ -17,6 +17,8 @@ namespace Parcial2_ap1_2018_0553
         public MainForm()
         {
             InitializeComponent();
+            this.RegistrosToolStripMenuItem.Click += new EventHandler(this.RegistrosToolStripMenuItem_ItemClicked);
+            this.ConsultasToolStripMenuItem.Click += new EventHandler(this.ConsultasToolStripMenuItem_ItemClicked);
         }
 
         private void RegistrosToolStripMenuItem_ItemClicked(object sender, EventArgs e)
